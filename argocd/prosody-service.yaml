@@ -19,6 +19,8 @@ spec:
     - name: "5280"
       port: 5280
       targetPort: 5280
+  externalIPs:
+    - '172.25.248.11'
   selector:
     io.kompose.service: prosody
 status:

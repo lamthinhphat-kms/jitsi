@@ -31,7 +31,7 @@ spec:
             - name: TZ
               value: UTC
             - name: XMPP_BOSH_URL_BASE
-              value: http://10.43.216.118:5280
+              value: http://172.25.248.11:5280
           image: jitsi/web:stable-8960-1
           name: web
           ports:
