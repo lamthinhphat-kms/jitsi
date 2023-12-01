@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f docker-compose-resolved.yaml
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: jicofo
+  name: jicofo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: jicofo
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert -f docker-compose-resolved.yaml
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/jitsi-docker-default: "true"
+        io.kompose.service: jicofo
+    spec:
+      containers:
+        - env:
+            - name: JICOFO_AUTH_PASSWORD
+              value: 4c7f01bf5042aa641efd3db9d6a3c067
+            - name: SENTRY_DSN
+              value: '"0"'
+            - name: TZ
+              value: UTC
+            - name: XMPP_SERVER
+              value: prosody
+          image: jitsi/jicofo:stable-8960-1
+          name: jicofo
+          ports:
+            - containerPort: 8888
+              hostIP: 127.0.0.1
+              hostPort: 8888
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
