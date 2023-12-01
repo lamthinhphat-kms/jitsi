@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: social-mdeia-web-argocd-application
+  name: social-mdeia-jitsi-argocd
   namespace: argocd
 spec:
-  project: jitsi
+  project: default
   destination:
     server: https://kubernetes.default.svc
     namespace: jitsi
